@@ -39,7 +39,7 @@ done)
 [ ${path_src##*'/'} != $path_dest ] && echo "Source ID $subvolid_src (${path_src##*'/'}) and destination ID $subvolid_dest ($path_dest) are diferent subvolumes" && Unmount 1
 
 # Create a snapshot (backup) before restoring.
-/usr/bin/createsnapshot $path_dest "Before restoring from $subvolid_src." $device && btrfs subvolume delete -c $mountpoint/$path_dest && btrfs subvolume snapshot $mountpoint/$path_src $mountpoint/$path_dest && echo "Restored from $subvolid_src" > $mountpoint/$path_dest/.subvol_comments
+./create_snapshot.sh $path_dest "Before restoring from $subvolid_src." $device && btrfs subvolume delete -c $mountpoint/$path_dest && btrfs subvolume snapshot $mountpoint/$path_src $mountpoint/$path_dest && echo "Restored from $subvolid_src" > $mountpoint/$path_dest/.subvol_comments
 
 Unmount
 
