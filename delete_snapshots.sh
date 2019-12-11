@@ -3,10 +3,12 @@
 # usage delete_snapshot.sh [count] [device]
 # count: Snapshots to keep (grouped by date). Default: 7
 
-count=${1:-7}
+LABEL=${1:-"IntSSD"}
+
+count=${2:-7}
 
 # Get the default device where root is mounted
-device=${2:-`grep '/@ ' /proc/mounts | cut -d' ' -f1`}
+device=${2:-`blkid -L $LABEL`}
 
 mountpoint="$(mktemp -d)"
     
