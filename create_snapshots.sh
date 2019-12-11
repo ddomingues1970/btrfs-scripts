@@ -27,7 +27,7 @@ function Unmount() {
     exit $ret
 }
 
-snapdir=$mountpoint/.snapshots/$(date +%Y_%m_%d_%H-%M-%S)
+snapdir=$mountpoint/snapshots/$(date +%Y_%m_%d_%H-%M-%S)
 
 [ -d "$snapdir" ] || mkdir -p "$snapdir" || exit 1
 
